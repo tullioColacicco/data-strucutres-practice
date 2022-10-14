@@ -13,6 +13,7 @@ var levelOrder = function (root) {
       if (node.left) stack.push(node.left);
       if (node.right) stack.push(node.right);
     }
+
     answer.push(level);
   }
   return answer;
