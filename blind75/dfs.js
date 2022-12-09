@@ -30,5 +30,21 @@ var twoSum = function (nums, target) {
   }
 };
 
+var isPalindrome = function (s) {
+  s = s.replace(/[^0-9a-zA-Z]+/gim, "");
+  s = s.toLowerCase();
+  var l = 0,
+    r = s.length - 1;
+  console.log(s);
+
+  while (l < r) {
+    if (s.charAt(l) != s.charAt(r)) {
+      return false;
+    }
+    l++;
+    r--;
+  }
+  return true;
+};
 console.log(twoSum((nums = [2, 7, 11, 15]), (target = 9)));
 console.log(dfs(graph, "a", (map = {}), "d"));
