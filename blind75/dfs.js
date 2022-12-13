@@ -98,6 +98,27 @@ function makeList(list) {
   return head.next;
 }
 
+function validP(s) {
+  let map = {
+    "}": "{",
+    ")": "(",
+    "]": "[",
+  };
+  let stack = [];
+  for (item of s) {
+    if (!map[item]) {
+      stack.push(item);
+      console.log(item);
+    } else if (map[item]) {
+      item;
+      let current = stack.pop();
+      if (map[item] != current) return false;
+    }
+  }
+  console.log(stack.length);
+}
+
+console.log(validP((s = "(()[]{}")));
 console.log(makeList(list1));
 console.log(mergeTwoSortedLists(list1, list2));
 
