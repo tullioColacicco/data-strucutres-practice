@@ -118,6 +118,34 @@ function validP(s) {
   console.log(stack.length);
 }
 
+function maxProfit(arr) {
+  let min = Infinity;
+  let profit = 0;
+  for (item of arr) {
+    if (item < min) {
+      min = item;
+    } else if (item > min) {
+      profit = Math.max(item - min, profit);
+    }
+  }
+  return profit;
+}
+
+function search(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[mid] < target) left = mid + 1;
+    else {
+      right = mid - 1;
+    }
+  }
+  return -1;
+}
+console.log(search([-1, 0, 3, 5, 9, 12], 9));
+console.log(maxProfit((prices = [7, 1, 5, 3, 6, 4])));
 console.log(validP((s = "(()[]{}")));
 console.log(makeList(list1));
 console.log(mergeTwoSortedLists(list1, list2));
