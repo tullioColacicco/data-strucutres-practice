@@ -144,6 +144,60 @@ function search(nums, target) {
   }
   return -1;
 }
+
+var floodFill = function (image, sr, sc, color) {
+  let src = image[sr][sc];
+  let map = {};
+  // console.log(image[sr][sc])
+
+  dfs(image, sr, sc, color, src, map);
+  function dfs(image, row, col, color, source, map) {
+    // console.log(row)
+    let string = row.toString() + "," + col.toString();
+    if (
+      image[row] === undefined ||
+      image[row][col] === undefined ||
+      image[row][col] != source
+    )
+      return;
+    if (map[string] != undefined) return;
+
+    if (image[row][col] === source) image[row][col] = color;
+    map[string] = true;
+    dfs(image, row + 1, col, color, source, map);
+    dfs(image, row - 1, col, color, source, map);
+    dfs(image, row, col + 1, color, source, map);
+    dfs(image, row, col - 1, color, source, map);
+  }
+  return image;
+};
+console.log(
+  floodFill(
+    (image = [
+      [1, 1, 1],
+      [1, 1, 0],
+      [1, 0, 1],
+    ]),
+    (sr = 1),
+    (sc = 1),
+    (color = 2)
+  )
+);
+
+let map = {};
+let row = 2;
+let col = 3;
+map["2,3"] = true;
+var hasCycle = function (head) {
+  let fast = head;
+  while (fast && fast.next) {
+    head = head.next;
+    fast = fast.next.next;
+    if (head === fast) return true;
+  }
+  return false;
+};
+console.log(row.toString() + "," + col.toString());
 console.log(search([-1, 0, 3, 5, 9, 12], 9));
 console.log(maxProfit((prices = [7, 1, 5, 3, 6, 4])));
 console.log(validP((s = "(()[]{}")));
