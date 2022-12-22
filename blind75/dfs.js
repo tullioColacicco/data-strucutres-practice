@@ -197,6 +197,25 @@ var hasCycle = function (head) {
   }
   return false;
 };
+
+var canConstruct = function(ransomNote, magazine) {
+  let ransomMap = map(ransomNote)
+  let magazineMap = map(magazine)
+  
+  function map(note) {
+     let map = {}
+     for(letter of note){
+         if(!map[letter]) map[letter] = 1
+         else{map[letter]+=1}
+     }
+     return map
+  }
+     for(key in ransomMap){
+         console.log(ransomMap)
+         if(!magazineMap[key] || magazineMap[key]< ransomMap[key]) return false
+     }
+     return true
+ };
 console.log(row.toString() + "," + col.toString());
 console.log(search([-1, 0, 3, 5, 9, 12], 9));
 console.log(maxProfit((prices = [7, 1, 5, 3, 6, 4])));
